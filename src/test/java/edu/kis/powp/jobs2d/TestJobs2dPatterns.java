@@ -8,6 +8,9 @@ import java.util.logging.Logger;
 import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.command.DriverCommand;
+import edu.kis.powp.command.RectangleFactory;
+import edu.kis.powp.jobs2d.drivers.SelectDriverMenuOptionListener;
 import edu.kis.powp.jobs2d.drivers.adapter.DrawerAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.JaneAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
@@ -41,6 +44,14 @@ public class TestJobs2dPatterns {
 						DriverFeature.getDriverManager(), driver -> FiguresJane.figureScript(new JaneAdapter(driver))
 				)
 		);
+
+		application.addTest("Rectangle", new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(),
+				driver -> {
+					DriverCommand rectangle = RectangleFactory.rectangleCommand(driver, 10, 10, 100, 50);
+					rectangle.execute();
+				}
+		));
 	}
 
 	/**
