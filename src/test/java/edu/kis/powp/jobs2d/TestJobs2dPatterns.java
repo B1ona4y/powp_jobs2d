@@ -48,8 +48,8 @@ public class TestJobs2dPatterns {
 		application.addTest("Rectangle", new SelectTestFigureOptionListener(
 				DriverFeature.getDriverManager(),
 				driver -> {
-					DriverCommand rectangle = RectangleFactory.rectangleCommand(driver, 10, 10, 100, 50);
-					rectangle.execute();
+					DriverCommand rectangle = RectangleFactory.rectangleCommand(10, 10, 100, 50);
+					rectangle.execute(driver);
 				}
 		));
 	}
